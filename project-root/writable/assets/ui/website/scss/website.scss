@@ -1,0 +1,110 @@
+//import bootstrap
+@import "../../bootstrap/scss/bootstrap/functions";
+@import "../../bootstrap/scss/bootstrap/variables";
+
+
+.bg-catalogue-img-mobile-wrap{
+    overflow: hidden;
+    position: relative;
+}
+.bg-catalogue-img-mobile-wrap img{
+    opacity: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    min-height: 300px;
+}
+.bg-catalogue-img-mobile-wrap .content{
+    background:rgba(0, 0, 0, 0.7);
+    position: relative;
+    padding: 1rem;
+    text-align: center;
+    min-height: 300px;
+    display: flex;
+    align-items: end;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.how-it-works-wrapper{
+    overflow:hidden;
+    position:relative;
+    background-color: $gray-200;
+    & .circle{
+        width: 500px;
+        height: 500px;
+        position: absolute;
+        background: #f8eee8;
+        border-radius: 50%;
+        right: 10%;
+        bottom: -30%;
+    }
+    & .how-it-works-icon-wrapper{
+        position: relative;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        padding-top: 25px;
+        & .icon-image{
+            font-size: 2rem;
+            position: absolute;
+            top: -20px;
+            background: #FFF;
+            color: $warning;
+            border-radius: 50%;
+            border: 1px solid $secondary;
+            width: 50%;
+            height: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
+.btn-primary{
+  color:#FFF;
+  &:hover{
+    color: #FFF;
+  }
+}
+
+.bg-catalogue-img-mobile-wrap{
+    overflow: hidden;
+    position: relative;
+}
+.bg-catalogue-img-mobile-wrap img{
+    opacity: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    min-height: 300px;
+}
+.bg-catalogue-img-mobile-wrap .content{
+    background:rgba(0, 0, 0, 0.7);
+    position: relative;
+    padding: 1rem;
+    text-align: center;
+    min-height: 300px;
+    display: flex;
+    align-items: end;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.navbar{
+    & .navbar-collapse{
+        &.collapse.show, &.collapsing{
+            background: $dark;
+        }
+    }
+}
