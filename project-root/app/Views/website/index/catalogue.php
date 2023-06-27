@@ -42,7 +42,16 @@
         $buffer->_div();
     };
 
-    $buffer->xspace(80);
+    $offcanvas =\app\ui::make()->offcanvas();
+    $buffer->xbutton(function(){
+        $buffer = \app\ui::make()->buffer();
+        $buffer->xicon("fa-chevron-left");
+        $buffer->span(["*" => "Quote Builder", ".ms-2" => true]);
+        return $buffer->build();
+    }, $offcanvas, [".position-fixed" => true, "#right" => "20px", "#top" => "90px"]);
+
+    $buffer->xspace(100);
+
     $buffer->div_([".container min-h-100vh my-5" => true]);
 
         $buffer->div_([".col text-center" => true, ]);
