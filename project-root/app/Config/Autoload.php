@@ -44,6 +44,7 @@ class Autoload extends AutoloadConfig
         APP_NAMESPACE   => APPPATH, // For custom app namespace
         'Config'        => APPPATH . 'Config',
         'app'           => APPPATH . 'Libraries/app',
+        'Libraries'     => APPPATH . 'Libraries',
         'db'            => APPPATH . 'Libraries/db',
         'set'           => APPPATH . 'Libraries/app/ui',
         'ui'            => APPPATH . 'Libraries/app/ui/set/bootstrap',

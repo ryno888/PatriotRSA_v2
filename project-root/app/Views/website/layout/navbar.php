@@ -41,7 +41,7 @@
         ".fixed-top" => true,
         "bg_color" => false,
         ".navbar-shrink force bg-checkered" => !$is_homepage,
-        "/navbar-toggler" => [".ms-auto" => true],
+        "/navbar-toggler" => [".ms-auto mb-2" => true],
         "/navbar-collapse" => [".py-3 py-lg-0" => true],
     ]));
 
