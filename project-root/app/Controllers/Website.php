@@ -4,9 +4,16 @@ namespace App\Controllers;
 
 class Website extends BaseController {
     //---------------------------------------------------------------------------------------
-    public function index( $page) {
+    public function index($page) {
 
         return \Kwerqy\Ember\com\ui\ui::make()->ci_controller("website", "website/index/{$page}");
+    }
+    //---------------------------------------------------------------------------------------
+    public function catalogue($page) {
+        return \Kwerqy\Ember\com\ui\ui::make()->ci_controller("website", "website/catalogue/$page", [
+            "pre_layout" => [],
+            "post_layout" => [],
+        ]);
     }
     //---------------------------------------------------------------------------------------
     public function message() {
@@ -72,7 +79,15 @@ class Website extends BaseController {
     //---------------------------------------------------------------------------------------
     public function newsletter_signup() {
 
-        return \mod\ui::make()->ci_controller("website", "website/index/newsletter_signup", [
+        return \Kwerqy\Ember\com\ui\ui::make()->ci_controller("website", "website/index/newsletter_signup", [
+            "pre_layout" => [],
+            "post_layout" => [],
+        ]);
+    }
+    //---------------------------------------------------------------------------------------
+    public function add_quote_item() {
+
+        return \Kwerqy\Ember\com\ui\ui::make()->ci_controller("website", "website/index/add_quote_item", [
             "pre_layout" => [],
             "post_layout" => [],
         ]);

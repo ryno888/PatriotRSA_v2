@@ -2,7 +2,10 @@
 @import "../../bootstrap/scss/bootstrap/functions";
 @import "../../bootstrap/scss/bootstrap/variables";
 
-
+.bg-custom-gradient{
+    background: #ff5100;
+    background: linear-gradient(180deg,#ffc107 0%,#ff5100 100%);
+}
 .bg-catalogue-img-mobile-wrap{
     overflow: hidden;
     position: relative;
