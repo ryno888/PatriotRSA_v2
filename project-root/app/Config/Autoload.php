@@ -49,6 +49,8 @@ class Autoload extends AutoloadConfig
         'set'           => APPPATH . 'Libraries/app/ui',
         'ui'            => APPPATH . 'Libraries/app/ui/set/bootstrap',
         'section'       => APPPATH . 'Libraries/section',
+        'incl'          => APPPATH . 'Libraries/incl',
+        'sessions'      => APPPATH . 'Libraries/sessions',
     ];
 
     /**

@@ -4,11 +4,11 @@
 
     if(!$controller->code) $controller->code = ERROR_CODE_500;
 
-    $buffer->add(\Kwerqy\Ember\comactory\page_meta\page_meta::make()->build());
+    $buffer->add(\Kwerqy\Ember\com\factory\page_meta\page_meta::make()->build());
 
     $error_class = \Kwerqy\Ember\com\solid_classes\helper::make()->get_from_constant($controller->code);
 
-    $buffer->div_([".mh-65 d-flex flex-row align-items-center" => true, ]);
+    $buffer->div_([".mh-80 d-flex flex-row align-items-center" => true, ]);
 		$buffer->div_([".container" => true, ]);
 			$buffer->div_([".row justify-content-center" => true, ]);
 				$buffer->div_([".col-md-12 text-center" => true, ]);
@@ -32,8 +32,6 @@
 			$buffer->_div();
 		$buffer->_div();
 	$buffer->_div();
-
-
 
 });
 

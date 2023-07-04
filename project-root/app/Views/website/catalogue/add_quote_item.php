@@ -3,10 +3,9 @@
 \Kwerqy\Ember\com\ui\ui::make()->ci_view((empty($controller) ?: $controller), function($buffer, $controller, $view){
 
     $buffer->div_([".add-quote-item-wrapper" => true]);
-        $buffer->form(site_url(""));
+        $buffer->form("website/xadd_quote_item");
         $buffer->div_([".row" => true]);
             $buffer->div_([".col-12" => true]);
-
 
                 $pro_supplier = [];
                 $pro_supplier[null] = "-- Not Selected --";

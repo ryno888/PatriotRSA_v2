@@ -77,6 +77,49 @@ class Website extends BaseController {
 
     }
     //---------------------------------------------------------------------------------------
+    public function xremove_quote_item() {
+        $index = \Kwerqy\Ember\Ember:: $request->get('index', TYPE_STRING);
+        if($index){
+            $quote_wizard = \sessions\quote_wizard::make();
+            $quote_wizard->remove_quote_item($index);
+            $quote_wizard->update();
+
+            return \Kwerqy\Ember\com\http\http::ajax_response(["js" => "
+                quote_panel.refresh({no_overlay:true});
+            "]);
+
+        }
+    }
+    //---------------------------------------------------------------------------------------
+    public function xadd_quote_item() {
+
+        if(!\Kwerqy\Ember\com\captcha\captcha::is_valid()){
+            $solid = \Kwerqy\Ember\com\solid_classes\helper::make()->get_from_constant("ERROR_CODE_CAPTCHA_ERROR");
+            return \Kwerqy\Ember\com\http\http::ajax_response(["alert" => $solid->get_description(), "title" => $solid->get_name()]);
+        }
+
+        if(!\Kwerqy\Ember\com\http\http::is_valid_form_submit()){
+		    return \Kwerqy\Ember\com\http\http::ajax_response(["redirect" => \Kwerqy\Ember\com\http\http::get_error_url(ERROR_CODE_ACCESS_DENIED)]);
+        }
+
+        $quote_wizard = \sessions\quote_wizard::make();
+
+         $quote_wizard->add_quote_item([
+            "cri_supplier" => \Kwerqy\Ember\Ember:: $request->get('cri_supplier', TYPE_STRING),
+            "cri_code" => \Kwerqy\Ember\Ember:: $request->get('cri_code', TYPE_STRING),
+            "cri_qty" => \Kwerqy\Ember\Ember:: $request->get('cri_qty', TYPE_STRING),
+            "cri_note" => \Kwerqy\Ember\Ember:: $request->get('cri_note', TYPE_TEXT),
+         ]);
+
+         $quote_wizard->update();
+
+        return \Kwerqy\Ember\com\http\http::ajax_response(["js" => "
+            $('#add_quote_item .btn-close').click();
+            quote_panel.refresh({no_overlay:true});
+        "]);
+
+    }
+    //---------------------------------------------------------------------------------------
     public function newsletter_signup() {
 
         return \Kwerqy\Ember\com\ui\ui::make()->ci_controller("website", "website/index/newsletter_signup", [
