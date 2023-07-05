@@ -23,7 +23,7 @@
             foreach ($link_arr as $label => $link) $fn_link($label, $link);
         $buffer->_ul();
         $buffer->p_([".text-center text-muted" => true, ]);
-            $buffer->add(sprintf(getenv("ember.copyright"), \Kwerqy\Ember\com\date\date::strtodate("today", "Y")));
+            $buffer->add(\Kwerqy\Ember\Ember::get_copyright());
         $buffer->_p();
     $buffer->_footer();
     

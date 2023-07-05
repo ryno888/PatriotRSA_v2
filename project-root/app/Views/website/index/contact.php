@@ -75,23 +75,36 @@
                             e.preventDefault();
                             
                             app.html.set_btn_loading(btn);
-                            
-                            grecaptcha.ready(function() {
-                                grecaptcha.execute('".getenv("ember.google.sitekey")."', {action: 'submit'}).then(function(token) {
-                                    ".\Kwerqy\Ember\com\js\js::ajax($action, [
-                                        "*no_overlay" => true,
-                                        "*data" => "!{'g-recaptcha-response':token}",
-                                        "*form" => "#{$buffer->form_id}",
-                                        "*beforeSend" => "function(){ 
-                                            $('#{$buffer->form_id}').find('.form-control').removeClass('is-invalid'); 
-                                        }",
-                                        "*success" => "function(response){
-                                            {$buffer->form_id}.process_form_response(response);
-                                            app.html.unset_btn_loading(btn);
-                                        }",
-                                    ])."
+                            if (typeof grecaptcha != 'undefined') {
+                                grecaptcha.ready(function() {
+                                    grecaptcha.execute('".getenv("ember.google.sitekey")."', {action: 'submit'}).then(function(token) {
+                                        ".\Kwerqy\Ember\com\js\js::ajax($action, [
+                                            "*no_overlay" => true,
+                                            "*data" => "!{'g-recaptcha-response':token}",
+                                            "*form" => "#{$buffer->form_id}",
+                                            "*beforeSend" => "function(){ 
+                                                $('#{$buffer->form_id}').find('.form-control').removeClass('is-invalid'); 
+                                            }",
+                                            "*success" => "function(response){
+                                                {$buffer->form_id}.process_form_response(response);
+                                                app.html.unset_btn_loading(btn);
+                                            }",
+                                        ])."
+                                    });
                                 });
-                            });
+                            }else{
+                                ".\Kwerqy\Ember\com\js\js::ajax($action, [
+                                    "*no_overlay" => true,
+                                    "*form" => "#{$buffer->form_id}",
+                                    "*beforeSend" => "function(){ 
+                                        $('#{$buffer->form_id}').find('.form-control').removeClass('is-invalid'); 
+                                    }",
+                                    "*success" => "function(response){
+                                        {$buffer->form_id}.process_form_response(response);
+                                        app.html.unset_btn_loading(btn);
+                                    }",
+                                ])."
+                            }
                         })
                     ");
                 $buffer->_div();

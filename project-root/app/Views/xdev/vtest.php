@@ -12,6 +12,46 @@
      */
 
 
+    $email = \Kwerqy\Ember\com\email\email::make();
+    $email->set_to("ryno@liquidedge.co.za");
+//    $email->set_to("ryno888@gmail.com");
+    $email->set_from("admin@patriotrsa.co.za", "PatriotRSA");
+    $email->set_subject("test Subject");
+    $email->set_body(function(){
+        $buffer = \Kwerqy\Ember\com\ui\ui::make()->buffer();
+        $buffer->p(["*" => "Dear Admin"]);
+        $buffer->p(["*" => "You have received a new contact request from your website."]);
+        $buffer->p(["*" => "Here are the details"]);
+
+        $buffer->p(["*" => "Kind Regards"]);
+        $buffer->p(["*" => getenv("ember.name"). " Team"]);
+        return $buffer->build();
+    });
+    $email->send();
+
+
+//    ini_set('error_log', WRITEPATH."logs/log-".\Kwerqy\Ember\com\date\date::strtodate().".log");
+//    trigger_error("Error message here", E_USER_ERROR);
+
+
+//    $email = \Config\Services::email();
+//     $email->sendMultipart = false;
+//     $email->setMailType("html");
+//
+//     $email->setFrom(getenv("ember.email.from"), getenv("ember.name").' - Contact Request');
+//     $email->setTo("ryno@liquidedge.co.za");
+//     $email->setSubject('Contact Request From Website');
+//
+//     $buffer = \Kwerqy\Ember\com\ui\ui::make()->buffer();
+//     $buffer->p(["*" => "Dear Admin"]);
+//     $buffer->p(["*" => "You have received a new contact request from your website."]);
+//     $buffer->p(["*" => "Here are the details"]);
+//
+//     $buffer->p(["*" => "Kind Regards"]);
+//     $buffer->p(["*" => getenv("ember.name"). " Team"]);
+//     $email->setMessage( $buffer->build());
+//
+//     $result =  $email->send();
 
 //    $person = core::dbt("person");
 

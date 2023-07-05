@@ -19,9 +19,12 @@
 
     $navbar = \Kwerqy\Ember\com\ui\ui::make()->navbar(["id" => "website_nav"]);
     $navbar->set_brand_html(function(){
-
-
-
+        return \app\ui::make()->button(function(){
+            $buffer = \app\ui::make()->buffer();
+            $buffer->xicon("fa-exchange-alt");
+            $buffer->span(["*" => "Quote Builder", ".ms-2" => true]);
+            return $buffer->build();
+        }, "$('.btn-quote-panel').click();", [".d-lg-none" => true]);
     });
     foreach ($url_arr as $url) {
         $navbar->add_item($url["label"], $url["link"], $url);

@@ -44,3 +44,16 @@
     }
 
 })(); // End of use strict
+
+
+$(function(){
+
+    let body = $('body');
+
+    body.on('click', '.offcanvas .btn-close', function(){
+        setTimeout(function(){
+            $('.btn-quote-panel').blur();
+        }, 300);
+    });
+
+});

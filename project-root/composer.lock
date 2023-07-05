@@ -699,16 +699,16 @@
         },
         {
             "name": "kwerqy/ember",
-            "version": "1.0.33",
+            "version": "1.0.34",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ryno888/ember.git",
-                "reference": "4a1b63ce8f98206357ecafe544f9233c938f54b8"
+                "reference": "4ba207ae66d65420c806a477fea941023257e159"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ryno888/ember/zipball/4a1b63ce8f98206357ecafe544f9233c938f54b8",
-                "reference": "4a1b63ce8f98206357ecafe544f9233c938f54b8",
+                "url": "https://api.github.com/repos/ryno888/ember/zipball/4ba207ae66d65420c806a477fea941023257e159",
+                "reference": "4ba207ae66d65420c806a477fea941023257e159",
                 "shasum": ""
             },
             "require": {
@@ -739,9 +739,9 @@
             "description": "A small plugin for use on Codeigniter 4 projects",
             "support": {
                 "issues": "https://github.com/ryno888/ember/issues",
-                "source": "https://github.com/ryno888/ember/tree/1.0.33"
+                "source": "https://github.com/ryno888/ember/tree/1.0.34"
             },
-            "time": "2023-07-04T09:34:45+00:00"
+            "time": "2023-07-05T08:42:44+00:00"
         },
         {
             "name": "laminas/laminas-escaper",

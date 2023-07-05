@@ -4,7 +4,7 @@
 
     if(!$controller->code) $controller->code = ERROR_CODE_500;
 
-    $buffer->add(\Kwerqy\Ember\comactory\page_meta\page_meta::make()->build());
+    $buffer->add(\Kwerqy\Ember\com\factory\page_meta\page_meta::make()->build());
 
     $error_class = \Kwerqy\Ember\com\solid_classes\helper::make()->get_from_constant($controller->code);
 

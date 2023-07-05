@@ -39,7 +39,7 @@
 
 			$buffer->_ul();
 			$buffer->p_([".text-white-50 mb-0" => true, ]);
-                $buffer->add(sprintf(getenv("ember.copyright"), \Kwerqy\Ember\com\date\date::strtodate("today", "Y")));
+                $buffer->add(\Kwerqy\Ember\Ember::get_copyright());
 			$buffer->_p();
 		$buffer->_div();
 	$buffer->_footer();
