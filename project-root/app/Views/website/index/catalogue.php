@@ -60,7 +60,7 @@
             $buffer->_div();
         $buffer->_div();
         return $buffer->build();
-    }, $offcanvas, [".position-fixed btn-quote-panel d-none d-lg-block" => true]);
+    }, $offcanvas, [".position-fixed btn-quote-panel d-none d-lg-block zoom zoom-sm" => true]);
 
     $buffer->xspace(100);
 

@@ -2,10 +2,14 @@
 
 \Kwerqy\Ember\com\ui\ui::make()->ci_view((empty($controller) ?: $controller), function($buffer, $controller, $view){
 
+    $index = \Kwerqy\Ember\com\str\str::generate_id();
+    $quote_wizard = \sessions\quote_wizard::make();
+
     $buffer->div_([".add-quote-item-wrapper" => true]);
         $buffer->form("website/xadd_quote_item");
         $buffer->div_([".row" => true]);
             $buffer->div_([".col-12" => true]);
+                $buffer->xihidden("index", $index);
 
                 $pro_supplier = [];
                 $pro_supplier[null] = "-- Not Selected --";
@@ -23,7 +27,18 @@
                     $buffer->_div();
                 $buffer->_div();
 
-                $buffer->xitextarea("qui_note", false, "Notes", ["required" => true, ".mb-2" => true, "label_col" => 12]);
+                $buffer->xitextarea("qui_note", false, "Notes", [
+                    "required" => true,
+                    ".mb-2" => true,
+                    "label_col" => 12,
+                ]);
+                $buffer->xdropzone("upload_add_{$index}", $quote_wizard->get_save_directory()."/uploads/{$index}", [
+                    "help" => [
+                        "*" => "Files limited to 4mb per file and a maximum of 5 files. Please add cloud link in notes for large files.",
+                        ".text-danger fs-8" => true,
+                    ],
+                ]);
+
             $buffer->_div();
         $buffer->_div();
 

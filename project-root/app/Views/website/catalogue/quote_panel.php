@@ -59,7 +59,7 @@
 
     $buffer->div_([".row my-3" => true]);
         $buffer->div_([".col-12" => true]);
-            $buffer->xbutton("Add Item", "app.browser.popup('".\Kwerqy\Ember\com\http\http::build_action_url("website/catalogue/add_quote_item")."', {title:'Add Item', width:'modal-md', id:'add_quote_item'})", [".btn-primary w-100" => true]);
+            $buffer->xbutton("Add Item", "app.browser.popup('".\Kwerqy\Ember\com\http\http::build_action_url("website/catalogue/add_quote_item")."', {title:'Add Item', width:'modal-md', id:'add_quote_item'})", [".btn-primary btn-primary-gradient w-100 py-2" => true]);
         $buffer->_div();
     $buffer->_div();
 
@@ -74,8 +74,14 @@
         $buffer->div_([".row mt-2" => true]);
             $buffer->div_([".col-12" => true]);
                 $buffer->xmessage("Please verify your email address before you continue with the quote.");
-                $buffer->itext("Email Address", "quo_email", false, ["required" => true, "limit" => "email", "label_col" => 12]);
-                $buffer->submit_button(["label" => "Verify Email Now", ".btn-success w-100" => true]);
+                $buffer->itext("Email Address", "quo_email", $quote_wizard->quo_email, ["required" => true, "limit" => "email", "label_col" => 12]);
+            $buffer->_div();
+        $buffer->_div();
+
+        $buffer->div_([".row mt-2" => true]);
+            $buffer->div_([".col-12 d-flex" => true]);
+                $buffer->xbutton("Clear Quote", \Kwerqy\Ember\com\js\js::ajax(site_url("website/xclear_quote"), ["*confirm" => true]), [".btn-secondary btn-secondary-gradient w-100 me-1 py-2" => true]);
+                $buffer->submit_button(["label" => "Verify Email Now", ".btn-primary btn-primary-gradient w-100 py-2" => true]);
             $buffer->_div();
         $buffer->_div();
 

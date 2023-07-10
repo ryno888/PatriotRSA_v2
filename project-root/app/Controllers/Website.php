@@ -16,6 +16,10 @@ class Website extends BaseController {
         ]);
     }
     //---------------------------------------------------------------------------------------
+    public function quote($page) {
+        return \Kwerqy\Ember\com\ui\ui::make()->ci_controller("website", "website/quote/$page");
+    }
+    //---------------------------------------------------------------------------------------
     public function message() {
 
         return \Kwerqy\Ember\com\ui\ui::make()->ci_controller("website", "website/index/message");
@@ -65,10 +69,10 @@ class Website extends BaseController {
             $buffer->p(["*" => "Here are the details"]);
 
             $buffer->p_();
-                $buffer->string(["*" => "Firstname: "])->span(["*" =>  $per_firstname, ".comment" => true])->br();
-                $buffer->string(["*" => "Surname: "])->span(["*" =>  $per_lastname, ".comment" => true])->br();
-                $buffer->string(["*" => "Email: "])->span(["*" =>  $per_email, ".comment" => true])->br()->br();
-                $buffer->string(["*" => "Message: "])->span(["*" => nl2br( $message), ".comment" => true])->br();
+                $buffer->strong(["*" => "Firstname: "])->span(["*" =>  $per_firstname, ".comment" => true])->br();
+                $buffer->strong(["*" => "Surname: "])->span(["*" =>  $per_lastname, ".comment" => true])->br();
+                $buffer->strong(["*" => "Email: "])->span(["*" =>  $per_email, ".comment" => true])->br()->br();
+                $buffer->strong(["*" => "Message: "])->span(["*" => nl2br( $message), ".comment" => true])->br();
             $buffer->_p();
 
             $buffer->p(["*" => "Kind Regards", "#margin" => "0px"]);
@@ -96,6 +100,15 @@ class Website extends BaseController {
         }
     }
     //---------------------------------------------------------------------------------------
+    public function xclear_quote() {
+        $quote_wizard = \sessions\quote_wizard::make();
+        $quote_wizard->clear(["delete" => true]);
+
+        return \Kwerqy\Ember\com\http\http::ajax_response(["js" => "
+            quote_panel.refresh({no_overlay:true});
+        "]);
+    }
+    //---------------------------------------------------------------------------------------
     public function xadd_quote_item() {
 
         if(!\Kwerqy\Ember\com\captcha\captcha::is_valid()){
@@ -107,6 +120,7 @@ class Website extends BaseController {
 		    return \Kwerqy\Ember\com\http\http::ajax_response(["redirect" => \Kwerqy\Ember\com\http\http::get_error_url(ERROR_CODE_ACCESS_DENIED)]);
         }
 
+        $index = \Kwerqy\Ember\Ember:: $request->get('index', TYPE_STRING);
         $quote_wizard = \sessions\quote_wizard::make();
 
          $quote_wizard->set_quote_item([
@@ -114,7 +128,7 @@ class Website extends BaseController {
             "qui_code" => \Kwerqy\Ember\Ember:: $request->get('qui_code', TYPE_STRING),
             "qui_qty" => \Kwerqy\Ember\Ember:: $request->get('qui_qty', TYPE_STRING),
             "qui_note" => \Kwerqy\Ember\Ember:: $request->get('qui_note', TYPE_TEXT),
-         ]);
+         ], ["index" => $index]);
 
          $quote_wizard->update();
 
@@ -178,32 +192,30 @@ class Website extends BaseController {
             ]]);
         }
 
+        $quote_wizard->save();
 
         $email = \Kwerqy\Ember\com\email\email::make();
-        $email->set_to("ryno@liquidedge.co.za");
-        $email->set_from("admin@patriotrsa.co.za", "PatriotRSA");
-        $email->set_subject("test Subject");
-        $email->set_body("test body");
+        $email->set_to($quote_wizard->quo_email);
+        $email->set_subject("Verify Email - Quote #{$quote_wizard->quote_nr}");
+        $email->set_body(function()use($quote_wizard){
+
+            $buffer = \Kwerqy\Ember\com\ui\ui::make()->buffer();
+            $buffer->p(["*" => "Thank you for requesting a quote."]);
+            $buffer->p(["*" => "Before we can continue, please take a moment to verify your email address by clicking the link below."]);
+
+            $buffer->p_();
+                $buffer->xlink(site_url("website/quote/complete_quote/quote_nr/{$quote_wizard->quote_nr}"), "Verify my Email Address");
+            $buffer->_p();
+
+            $buffer->p(["*" => "Kind Regards", "#margin" => "0px"]);
+            $buffer->strong(["*" => getenv("ember.name"). " Team"]);
+
+            return $buffer->build();
+
+        });
         $email->send();
 
-//        $index = \Kwerqy\Ember\Ember:: $request->get('index', TYPE_STRING);
-//        $quote_wizard = \sessions\quote_wizard::make();
-//
-//        if($index){
-//            $quote_wizard->set_quote_item([
-//                "qui_supplier" => \Kwerqy\Ember\Ember:: $request->get('qui_supplier', TYPE_STRING),
-//                "qui_code" => \Kwerqy\Ember\Ember:: $request->get('qui_code', TYPE_STRING),
-//                "qui_qty" => \Kwerqy\Ember\Ember:: $request->get('qui_qty', TYPE_STRING),
-//                "qui_note" => \Kwerqy\Ember\Ember:: $request->get('qui_note', TYPE_TEXT),
-//             ], ["index" => $index]);
-//        }
-//
-//         $quote_wizard->update();
-//
-//        return \Kwerqy\Ember\com\http\http::ajax_response(["js" => "
-//            $('#edit_quote_item .btn-close').click();
-//            quote_panel.refresh({no_overlay:true});
-//        "]);
+        return \Kwerqy\Ember\com\http\http::ajax_response(["redirect" => \Kwerqy\Ember\com\http\http::get_message_url(MESSAGE_CODE_100)]);
 
     }
     //---------------------------------------------------------------------------------------

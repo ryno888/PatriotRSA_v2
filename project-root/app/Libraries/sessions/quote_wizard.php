@@ -6,6 +6,7 @@ class quote_wizard extends \Kwerqy\Ember\com\session\intf\session_helper {
     public array $quote_item_arr = [];
     public string $quote_nr = '';
     public string $quo_email = '';
+    public bool $quo_is_complete = false;
 
     //--------------------------------------------------------------------------------
     protected function __construct($options = []) {
@@ -30,6 +31,7 @@ class quote_wizard extends \Kwerqy\Ember\com\session\intf\session_helper {
 
         $this->quote_item_arr[$options["index"]] = array_merge([
             "index" => $options["index"],
+            "file_directory" => $this->get_save_directory()."/uploads/{$options["index"]}",
             "qui_supplier" => "",
             "qui_code" => "",
             "qui_qty" => 0,
@@ -48,19 +50,33 @@ class quote_wizard extends \Kwerqy\Ember\com\session\intf\session_helper {
     }
     //--------------------------------------------------------------------------------
     protected function on_clear($options = []) {
+
+        $options = array_merge([
+            "delete" => false
+        ], $options);
+
+        if($options["delete"]){
+            \Kwerqy\Ember\com\os\os::removedir($this->get_save_directory());
+        }
+
         $this->quote_item_arr = [];
         $this->quote_nr = '';
         $this->quo_email = '';
+        $this->quo_is_complete = false;
+    }
+    //--------------------------------------------------------------------------------
+    public function get_save_directory() {
+        return DIR_QUOTES."/{$this->quote_nr}";
     }
     //--------------------------------------------------------------------------------
     public function save() {
 
-        $filename = DIR_QUOTES."/{$this->quote_nr}/quote_data";
+        $filename = $this->get_save_directory()."/quote_data";
         $data_arr = [];
         $data_arr["quote_nr"] = $this->quote_nr;
         $data_arr["quo_email"] = $this->quo_email;
         $data_arr["quote_item_arr"] = $this->quote_item_arr;
-
+        $data_arr["quo_is_complete"] = $this->quo_is_complete;
 
         \Kwerqy\Ember\com\os\os::mkdir(dirname($filename));
 
@@ -79,11 +95,14 @@ class quote_wizard extends \Kwerqy\Ember\com\session\intf\session_helper {
             $data = json_decode(file_get_contents($filename));
             $this->quote_nr = $data->quote_nr;
             $this->quo_email = $data->quo_email;
+            $this->quo_is_complete = $data->quo_is_complete;
 
             foreach ($data->quote_item_arr as $quote_item){
                 $this->quote_item_arr[$quote_item->index] = (array) $quote_item;
             }
             $this->update();
+
+            return true;
         }
     }
     //--------------------------------------------------------------------------------

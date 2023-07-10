@@ -699,16 +699,16 @@
         },
         {
             "name": "kwerqy/ember",
-            "version": "1.0.34",
+            "version": "1.0.35",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ryno888/ember.git",
-                "reference": "4ba207ae66d65420c806a477fea941023257e159"
+                "reference": "76a158846b0f4e9827f1f67539f1100db9ec3f08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ryno888/ember/zipball/4ba207ae66d65420c806a477fea941023257e159",
-                "reference": "4ba207ae66d65420c806a477fea941023257e159",
+                "url": "https://api.github.com/repos/ryno888/ember/zipball/76a158846b0f4e9827f1f67539f1100db9ec3f08",
+                "reference": "76a158846b0f4e9827f1f67539f1100db9ec3f08",
                 "shasum": ""
             },
             "require": {
@@ -739,9 +739,9 @@
             "description": "A small plugin for use on Codeigniter 4 projects",
             "support": {
                 "issues": "https://github.com/ryno888/ember/issues",
-                "source": "https://github.com/ryno888/ember/tree/1.0.34"
+                "source": "https://github.com/ryno888/ember/tree/1.0.35"
             },
-            "time": "2023-07-05T08:42:44+00:00"
+            "time": "2023-07-10T12:55:11+00:00"
         },
         {
             "name": "laminas/laminas-escaper",
@@ -2204,16 +2204,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.6.9",
+            "version": "9.6.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "a9aceaf20a682aeacf28d582654a1670d8826778"
+                "reference": "a6d351645c3fe5a30f5e86be6577d946af65a328"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a9aceaf20a682aeacf28d582654a1670d8826778",
-                "reference": "a9aceaf20a682aeacf28d582654a1670d8826778",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a6d351645c3fe5a30f5e86be6577d946af65a328",
+                "reference": "a6d351645c3fe5a30f5e86be6577d946af65a328",
                 "shasum": ""
             },
             "require": {
@@ -2287,7 +2287,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.9"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.10"
             },
             "funding": [
                 {
@@ -2303,7 +2303,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-06-11T06:13:56+00:00"
+            "time": "2023-07-10T04:04:23+00:00"
         },
         {
             "name": "psr/container",

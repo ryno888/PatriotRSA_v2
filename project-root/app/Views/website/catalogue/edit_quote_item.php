@@ -34,6 +34,15 @@
                 $buffer->_div();
 
                 $buffer->xitextarea("qui_note", $quote_item["qui_note"], "Notes", ["required" => true, ".mb-2" => true, "label_col" => 12]);
+
+                $buffer->xdropzone("upload_edit_{$controller->index}", $quote_wizard->get_save_directory()."/uploads/{$controller->index}", [
+                    "uploaded_files_arr" => glob($quote_wizard->get_save_directory()."/uploads/{$controller->index}/*"),
+                    "help" => [
+                        "*" => "Files limited to 4mb per file and a maximum of 5 files. Please add cloud link in notes for large files.",
+                        ".text-danger fs-8" => true,
+                    ],
+                ]);
+
             $buffer->_div();
         $buffer->_div();
 
