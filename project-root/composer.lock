@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ee79b6f0130ec7e332b507b4ce16cb86",
+    "content-hash": "08575b9d91625a3be855a092fe0d2572",
     "packages": [
         {
             "name": "codeigniter4/framework",
@@ -699,16 +699,16 @@
         },
         {
             "name": "kwerqy/ember",
-            "version": "1.0.35",
+            "version": "1.0.36",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ryno888/ember.git",
-                "reference": "76a158846b0f4e9827f1f67539f1100db9ec3f08"
+                "reference": "d1bc83d3caead8f3e662421c5c1dde524b531272"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ryno888/ember/zipball/76a158846b0f4e9827f1f67539f1100db9ec3f08",
-                "reference": "76a158846b0f4e9827f1f67539f1100db9ec3f08",
+                "url": "https://api.github.com/repos/ryno888/ember/zipball/d1bc83d3caead8f3e662421c5c1dde524b531272",
+                "reference": "d1bc83d3caead8f3e662421c5c1dde524b531272",
                 "shasum": ""
             },
             "require": {
@@ -739,9 +739,9 @@
             "description": "A small plugin for use on Codeigniter 4 projects",
             "support": {
                 "issues": "https://github.com/ryno888/ember/issues",
-                "source": "https://github.com/ryno888/ember/tree/1.0.35"
+                "source": "https://github.com/ryno888/ember/tree/1.0.36"
             },
-            "time": "2023-07-10T12:55:11+00:00"
+            "time": "2023-07-12T11:26:34+00:00"
         },
         {
             "name": "laminas/laminas-escaper",
@@ -3379,7 +3379,8 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.3 || ^8.0"
+        "php": "^7.3 || ^8.0",
+        "ext-zip": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "2.2.0"

@@ -112,6 +112,12 @@
     }
 }
 
+.btn-outline-primary{
+    &:hover{
+        color:#fff;
+    }
+}
+
 .btn-quote-panel{
     left: calc(100% - 120px);
     top: 90px;

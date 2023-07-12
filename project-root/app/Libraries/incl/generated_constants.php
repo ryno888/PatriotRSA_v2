@@ -199,6 +199,22 @@ if(!defined("ERROR_CODE_MAINTENANCE")) define("ERROR_CODE_MAINTENANCE", "9");
  */
 if(!defined("MESSAGE_CODE_100")) define("MESSAGE_CODE_100", "100");
 //-------------------------------------------------------------
+//MESSAGE_CODE_101
+//-------------------------------------------------------------
+/**
+ * MESSAGE_CODE_101
+ * Thank you for submitting your quote. We will be in contact with you shortly.
+ */
+if(!defined("MESSAGE_CODE_101")) define("MESSAGE_CODE_101", "101");
+//-------------------------------------------------------------
+//MESSAGE_CODE_102
+//-------------------------------------------------------------
+/**
+ * MESSAGE_CODE_102
+ * We have sent you an mail. Please click the link to verify your email address.
+ */
+if(!defined("MESSAGE_CODE_102")) define("MESSAGE_CODE_102", "102");
+//-------------------------------------------------------------
 //ADMIN
 //-------------------------------------------------------------
 /**

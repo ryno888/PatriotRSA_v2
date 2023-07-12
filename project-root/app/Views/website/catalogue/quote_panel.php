@@ -30,13 +30,13 @@
                 $buffer->div_([".col-11 fs-7 bg-light py-3 rounded-3 mb-2" => true]);
                     $buffer->div_([".row align-items-center" => true]);
                         $buffer->div_([".col" => true]);
-                            $buffer->div(["*" => $quote_item["qui_supplier"], ".font-weight-bold fs-9" => true]);
-                            $buffer->span(["*" => "{$quote_item["qui_code"]} ({$quote_item["qui_qty"]})", "text-gray" => true]);
+                            $buffer->div(["*" => $quote_item->qui_supplier, ".font-weight-bold fs-9" => true]);
+                            $buffer->span(["*" => "{$quote_item->qui_code} ({$quote_item->qui_qty})", "text-gray" => true]);
                         $buffer->_div();
                         $buffer->div_([".col-auto" => true]);
-                            $buffer->xicon("fa-edit", ["!click" => "app.browser.popup('".\Kwerqy\Ember\com\http\http::build_action_url("website/catalogue/edit_quote_item/index/{$quote_item["index"]}")."', {title:'Edit Item', width:'modal-md', id:'edit_quote_item'})", ".cursor-pointer me-2" => true]);
+                            $buffer->xicon("fa-edit", ["!click" => "app.browser.popup('".\Kwerqy\Ember\com\http\http::build_action_url("website/catalogue/edit_quote_item/index/{$quote_item->index}")."', {title:'Edit Item', width:'modal-md', id:'edit_quote_item'})", ".cursor-pointer me-2" => true]);
                             $buffer->xicon("fa-times", ["!click" => \Kwerqy\Ember\com\js\js::ajax(site_url("website/xremove_quote_item"), [
-                                "*data" => ["index" => $quote_item["index"]],
+                                "*data" => ["index" => $quote_item->index],
                             ]), ".cursor-pointer" => true]);
                         $buffer->_div();
                     $buffer->_div();

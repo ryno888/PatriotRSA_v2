@@ -177,6 +177,20 @@ class library extends \Kwerqy\Ember\com\intf\standard {
 			"value" => "100",
 			"category" => "MESSAGE_CODE_100",
 		],
+		"MESSAGE_CODE_101" => [
+			"classname" => "\\Kwerqy\\Ember\\com\\solid_classes\\message\\message_code_101",
+			"filename" => "C:\inetpub\wwwroot\diepatriot_v2\project-root\vendor\kwerqy\ember\src\com\incl/../../com/solid_classes/message/message_code_101.php",
+			"constant" => "MESSAGE_CODE_101",
+			"value" => "101",
+			"category" => "MESSAGE_CODE_101",
+		],
+		"MESSAGE_CODE_102" => [
+			"classname" => "\\Kwerqy\\Ember\\com\\solid_classes\\message\\message_code_102",
+			"filename" => "C:\inetpub\wwwroot\diepatriot_v2\project-root\vendor\kwerqy\ember\src\com\incl/../../com/solid_classes/message/message_code_102.php",
+			"constant" => "MESSAGE_CODE_102",
+			"value" => "102",
+			"category" => "MESSAGE_CODE_102",
+		],
 		"USER_ROLE_ADMIN" => [
 			"classname" => "\\Kwerqy\\Ember\\com\\solid_classes\\user_role\\admin",
 			"filename" => "C:\inetpub\wwwroot\diepatriot_v2\project-root\vendor\kwerqy\ember\src\com\incl/../../com/solid_classes/user_role/admin.php",
