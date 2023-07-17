@@ -108,6 +108,7 @@
   border: none; }
 
 .whatsapp-widget {
+  z-index: 999;
   color: #FFF;
   font-size: 2rem;
   background: #007a0c;
