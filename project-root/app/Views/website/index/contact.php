@@ -24,7 +24,7 @@
                 $buffer->div_([".col-md-6 col-xl-4" => true, ]);
                     $buffer->div_([".d-flex flex-column justify-content-center align-items-start h-100" => true, ]);
 
-                        $buffer->a_(["@href" => "https://wa.me/".getenv("ember.website.social.whatsapp.nr"), "@target" => "_blank", ".text-dark" => true]);
+                        $buffer->a_(["@href" => "https://wa.me/".getenv("ember.social.whatsapp.nr"), "@target" => "_blank", ".text-dark" => true]);
                             $buffer->div_([".d-flex align-items-center p-3" => true, ]);
                                 $buffer->div_([".bg-primary rounded-2 text-white p-3 fs-3 d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block bs-icon bs-icon-md" => true, ]);
                                     $buffer->xicon("fab-whatsapp");

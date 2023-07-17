@@ -45,6 +45,6 @@
 	$buffer->_footer();
 
 
-	$buffer->xlink("https://wa.me/".getenv("ember.website.social.whatsapp.nr"), false, [".whatsapp-widget" => true, "@target" => "_blank", "icon" => "fab-whatsapp"]);
+	$buffer->xlink("https://wa.me/".getenv("ember.social.whatsapp.nr"), false, [".whatsapp-widget" => true, "@target" => "_blank", "icon" => "fab-whatsapp"]);
 
 });
