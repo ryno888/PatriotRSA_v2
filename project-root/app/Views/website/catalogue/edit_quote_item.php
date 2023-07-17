@@ -48,6 +48,16 @@
 
         $buffer->div_([".row mt-4" => true]);
             $buffer->div_([".col-12" => true]);
+                $buffer->span_(["." => true]);
+                    $buffer->add("Send us a ");
+                    $buffer->xlink("https://wa.me/".getenv("ember.website.social.whatsapp.nr"), "Whatsapp", [".text-success link-unstyled" => true, "@target" => "_blank"]);
+                    $buffer->add(" for any assistance that may be required.");
+                $buffer->_span();
+            $buffer->_div();
+        $buffer->_div();
+
+        $buffer->div_([".row mt-4" => true]);
+            $buffer->div_([".col-12" => true]);
                 $buffer->submit_button(["label" => "Save Changes", ".w-100 mb-2" => true]);
             $buffer->_div();
         $buffer->_div();
