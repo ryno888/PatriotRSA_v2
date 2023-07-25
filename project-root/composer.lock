@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "08575b9d91625a3be855a092fe0d2572",
+    "content-hash": "4584e0e7407033497d0cb9f14c7526fc",
     "packages": [
         {
             "name": "codeigniter4/framework",
@@ -699,16 +699,16 @@
         },
         {
             "name": "kwerqy/ember",
-            "version": "1.0.41",
+            "version": "1.1.00",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ryno888/ember.git",
-                "reference": "41b50662070550ed508f7b7cd77047990dd83ae3"
+                "reference": "b69260227d92a6a889473b684c800efa84a6be91"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ryno888/ember/zipball/41b50662070550ed508f7b7cd77047990dd83ae3",
-                "reference": "41b50662070550ed508f7b7cd77047990dd83ae3",
+                "url": "https://api.github.com/repos/ryno888/ember/zipball/b69260227d92a6a889473b684c800efa84a6be91",
+                "reference": "b69260227d92a6a889473b684c800efa84a6be91",
                 "shasum": ""
             },
             "require": {
@@ -739,9 +739,9 @@
             "description": "A small plugin for use on Codeigniter 4 projects",
             "support": {
                 "issues": "https://github.com/ryno888/ember/issues",
-                "source": "https://github.com/ryno888/ember/tree/1.0.41"
+                "source": "https://github.com/ryno888/ember/tree/1.1.00"
             },
-            "time": "2023-07-21T13:05:56+00:00"
+            "time": "2023-07-25T08:18:56+00:00"
         },
         {
             "name": "laminas/laminas-escaper",
