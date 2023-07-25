@@ -1,3 +1,6 @@
-
+.btn-primary {
+  color: #FFF; }
+  .btn-primary:hover, .btn-primary:active {
+    color: #FFF; }
 
 /*# sourceMappingURL=system.css.map */

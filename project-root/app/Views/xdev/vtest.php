@@ -12,22 +12,72 @@
      */
 
 
-    $email = \Kwerqy\Ember\com\email\email::make();
-    $email->set_to("ryno@liquidedge.co.za");
-//    $email->set_to("ryno888@gmail.com");
-    $email->set_from("admin@patriotrsa.co.za", "PatriotRSA");
-    $email->set_subject("test Subject");
-    $email->set_body(function(){
-        $buffer = \Kwerqy\Ember\com\ui\ui::make()->buffer();
-        $buffer->p(["*" => "Dear Admin"]);
-        $buffer->p(["*" => "You have received a new contact request from your website."]);
-        $buffer->p(["*" => "Here are the details"]);
+    display(\Kwerqy\Ember\com\num\num::format_bytes(50000));
+    display(\Kwerqy\Ember\com\num\num::format_amount(50000));
+    display(\Kwerqy\Ember\com\num\num::currency(1234.56), true);
 
-        $buffer->p(["*" => "Kind Regards"]);
-        $buffer->p(["*" => getenv("ember.name"). " Team"]);
-        return $buffer->build();
-    });
-    $email->send();
+
+    $product_arr = \Kwerqy\Ember\Ember::dbt("product")->get_fromdb("1=1", ["multiple" => true]);
+    foreach ($product_arr as $product){
+        $product->pro_name = str_replace('"', "", $product->pro_name);
+        $product->update();
+    }
+
+//    $mock_data_arr = explode("\n", $mock_data);
+//    foreach ($mock_data_arr as $mock_data){
+//
+//        $product = \Kwerqy\Ember\Ember::dbt("product")->get_fromdefault();
+//        $product->pro_name = str_replace(["\n"], "", $mock_data);
+//        $product->pro_is_published = 1;
+//        $product->pro_price = rand(500, 800);
+//        $product->insert();
+//
+//    }
+    
+//    $role = \Kwerqy\Ember\com\solid_classes\helper::make()->get_from_constant("USER_ROLE_DEV");
+//
+//    $sql = \Kwerqy\Ember\com\db\sql\select::make();
+//    $sql->select("person_role.*");
+//    $sql->from("person_role");
+//    $sql->left_join("acl_role", "pel_ref_acl_role = acl_id");
+//    $sql->and_where("pel_ref_person = ".dbvalue(2));
+//    $sql->and_where("acl_code = ".dbvalue($role->get_code()));
+//
+//    display($sql->build());
+
+//    $sql = \Kwerqy\Ember\com\db\sql\select::make();
+//    $sql->select("person.*");
+//    $sql->from("person");
+//    $sql->and_where("1=1");
+//
+//    $person = \Kwerqy\Ember\Ember::dbt("person")->get_fromsql($sql);
+//    display($person->has_role(USER_ROLE_DEV));
+
+//    \Kwerqy\Ember\Ember::dbt("acl_role")->install_defaults();
+//    \Kwerqy\Ember\Ember::dbt("person")->install_defaults();
+
+
+//    $php_to_db = \Kwerqy\Ember\com\db\coder\php_to_db::make();
+//
+//    display($php_to_db->get_create_sql("product"));
+
+
+//    $email = \Kwerqy\Ember\com\email\email::make();
+//    $email->set_to("ryno@liquidedge.co.za");
+////    $email->set_to("ryno888@gmail.com");
+//    $email->set_from("admin@patriotrsa.co.za", "PatriotRSA");
+//    $email->set_subject("test Subject");
+//    $email->set_body(function(){
+//        $buffer = \Kwerqy\Ember\com\ui\ui::make()->buffer();
+//        $buffer->p(["*" => "Dear Admin"]);
+//        $buffer->p(["*" => "You have received a new contact request from your website."]);
+//        $buffer->p(["*" => "Here are the details"]);
+//
+//        $buffer->p(["*" => "Kind Regards"]);
+//        $buffer->p(["*" => getenv("ember.name"). " Team"]);
+//        return $buffer->build();
+//    });
+//    $email->send();
 
 
 //    ini_set('error_log', WRITEPATH."logs/log-".\Kwerqy\Ember\com\date\date::strtodate().".log");
