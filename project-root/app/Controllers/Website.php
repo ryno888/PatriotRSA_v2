@@ -111,10 +111,10 @@ class Website extends BaseController {
     //---------------------------------------------------------------------------------------
     public function xadd_quote_item() {
 
-        if(!\Kwerqy\Ember\com\captcha\captcha::is_valid()){
-            $solid = \Kwerqy\Ember\com\solid_classes\helper::make()->get_from_constant("ERROR_CODE_CAPTCHA_ERROR");
-            return \Kwerqy\Ember\com\http\http::ajax_response(["alert" => $solid->get_description(), "title" => $solid->get_name()]);
-        }
+//        if(!\Kwerqy\Ember\com\captcha\captcha::is_valid()){
+//            $solid = \Kwerqy\Ember\com\solid_classes\helper::make()->get_from_constant("ERROR_CODE_CAPTCHA_ERROR");
+//            return \Kwerqy\Ember\com\http\http::ajax_response(["alert" => $solid->get_description(), "title" => $solid->get_name()]);
+//        }
 
         if(!\Kwerqy\Ember\com\http\http::is_valid_form_submit()){
 		    return \Kwerqy\Ember\com\http\http::ajax_response(["redirect" => \Kwerqy\Ember\com\http\http::get_error_url(ERROR_CODE_ACCESS_DENIED)]);
