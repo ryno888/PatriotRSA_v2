@@ -90,7 +90,7 @@
                             $buffer->hr();
                             $buffer->div_([".d-flex" => true]);
                                 $buffer->xlink("#", "Cancel Quote", [".btn btn-outline-secondary w-100 me-2" => true]);
-                                $buffer->submit_button(["label" => "Submit Quote", ".w-100" => true]);
+                                $buffer->submit_button(["label" => "Submit Quote", ".w-100" => true, "@data-captcha" => getenv("ember.integrations.google.captcha.sitekey")]);
                             $buffer->_div();
                         $buffer->_div();
                     $buffer->_div();
@@ -113,7 +113,7 @@
                                         $ul->add_li($quote_item->qui_qty, "Qty:");
                                         $ul->add_li(nl2br($quote_item->qui_note), "Note:", ["/content" => [".fs-8" => true]]);
                                         $ul->add_li(function()use($quote_item, $quote_wizard){
-                                            $buffer = \app\ui::make()->buffer();
+                                            $buffer = \app\ui\ui::make()->buffer();
                                             $file_arr = glob($quote_item->file_directory."/*");
                                             foreach ($file_arr as $file){
                                                 $buffer->xlink(site_url("website/xdownload_quote_item/quote_nr/{$quote_wizard->quote_nr}/id/{$quote_item->index}/filename/".urlencode(basename($file))), false, ["icon" => "fa-paperclip", ".btn btn-outline-primary me-1" => true, "@target" => "_blank", "@title" => basename($file)]);

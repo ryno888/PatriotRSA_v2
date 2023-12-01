@@ -33,7 +33,7 @@
                         $buffer->hr();
                         $buffer->div_([".row mb-2" => true]);
                             $buffer->div_([".col-12" => true]);
-                                $ul = \app\ui::make()->ul();
+                                $ul = \app\ui\ui::make()->ul();
                                 $ul->add_li($quote_wizard->per_firstname, "First Name:");
                                 $ul->add_li($quote_wizard->per_lastname, "Surname:");
                                 $ul->add_li($quote_wizard->per_contactnr, "Contact Number:");
@@ -48,7 +48,7 @@
                         $buffer->div_([".row mb-2" => true]);
                             $buffer->div_([".col-12" => true]);
 
-                                $ul = \app\ui::make()->ul();
+                                $ul = \app\ui\ui::make()->ul();
                                 $ul->add_li($quote_wizard->per_company_name, "Company Name:");
                                 $ul->add_li($quote_wizard->per_tellnr_work, "Company Contact Number:");
                                 $ul->add_li($quote_wizard->per_address_shipping, "Shipping Address:");
@@ -84,7 +84,7 @@
                                     $ul->add_li($quote_item->qui_qty, "Qty:");
                                     $ul->add_li(nl2br($quote_item->qui_note), "Note:", ["/content" => [".fs-8" => true]]);
                                     $ul->add_li(function()use($quote_item, $quote_wizard){
-                                        $buffer = \app\ui::make()->buffer();
+                                        $buffer = \app\ui\ui::make()->buffer();
                                         $file_arr = glob($quote_item->file_directory."/*");
                                         foreach ($file_arr as $file){
                                             $buffer->xlink(site_url("website/xdownload_quote_item/quote_nr/{$quote_wizard->quote_nr}/id/{$quote_item->index}/filename/".urlencode(basename($file))), false, ["icon" => "fa-paperclip", ".btn btn-outline-primary me-1" => true, "@target" => "_blank", "@title" => basename($file)]);

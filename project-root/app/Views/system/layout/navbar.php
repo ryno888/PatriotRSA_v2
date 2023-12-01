@@ -8,8 +8,9 @@
      */
 
     $link_arr = [];
-    $link_arr["Products"] = site_url("product/vlist");
+    $link_arr["Products"] = site_url("sysproduct/vlist");
     $link_arr["Users"] = site_url("system/person/vlist");
+    $link_arr["Config"] = site_url("sysconfig/vmanage");
     if(\Kwerqy\Ember\Ember::$user->active_user) $link_arr["Logout"] = site_url("system/xlogout");
 
     $buffer->section_();

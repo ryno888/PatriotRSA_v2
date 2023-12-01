@@ -58,7 +58,7 @@
 
         $buffer->div_([".row mt-4" => true]);
             $buffer->div_([".col-12" => true]);
-                $buffer->submit_button(["label" => "Save Changes", ".w-100 mb-2" => true]);
+                $buffer->submit_button(["label" => "Save Changes", ".w-100 mb-2" => true, "@data-captcha" => getenv("ember.integrations.google.captcha.sitekey")]);
             $buffer->_div();
         $buffer->_div();
     $buffer->_div();

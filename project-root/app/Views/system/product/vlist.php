@@ -16,7 +16,7 @@
 				    $table->set_key("pro_id");
 				    $table->set_title("Products");
 				    $table->nav_append_left(function($table, $toolbar){
-				        $toolbar->add_button("Add new Product", \app\ui::make()->js_popup(site_url("product/vadd"), [
+				        $toolbar->add_button("Add new Product", \app\ui\ui::make()->js_popup(site_url("sysproduct/vadd"), [
                             "*title" => "Add new Product",
                             "*width" => "modal-xl",
                         ]), [".btn-sm" => true, "icon" => "fa-plus"]);
@@ -32,8 +32,8 @@
 				    $table->add_field("Title", "pro_name");
 				    $table->add_field("Published", "id", ["nosort" => true, "function" => function($content, $item_index, $field_index, $table){
 				        $product = \Kwerqy\Ember\Ember::dbt("product")->get_fromarray($table->item_arr[$item_index]);
-				        return \app\ui::make()->iswitch("switch_{$product->id}", $product->pro_is_published, false, [
-				            "!click" => \Kwerqy\Ember\com\js\js::ajax(site_url("product/xtoggle_product/slug/{$product->pro_slug}/field/pro_is_published")),
+				        return \app\ui\ui::make()->iswitch("switch_{$product->id}", $product->pro_is_published, false, [
+				            "!click" => \Kwerqy\Ember\com\js\js::ajax(site_url("sysproduct/xtoggle_product/slug/{$product->pro_slug}/field/pro_is_published")),
                             "/wrapper" => [".mt-1" => true]
                         ]);
                     }]);
@@ -42,8 +42,7 @@
                     }]);
 
 				    $table->add_action_dropdown(function($item_data, $dropdown, $table){
-				        $dropdown->add_link("#", "test");
-				        $dropdown->add_button("test");
+				        $dropdown->add_link(site_url("sysproduct/vmanage/id/{$item_data["pro_slug"]}"), "Edit");
                     });
 
                     $buffer->add($table->build());

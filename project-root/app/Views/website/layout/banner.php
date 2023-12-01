@@ -7,7 +7,7 @@
      * @var $view \Kwerqy\Ember\com\ci\view\view
      */
     
-    $buffer->add(\app\ui::make()->loader());
+    $buffer->add(\app\ui\ui::make()->loader());
 
 //    $buffer->section_([".banner-wrapper min-h-100px" => true, ]);
 //        $buffer->div_([".container" => true, ]);

@@ -51,6 +51,8 @@ class Autoload extends AutoloadConfig
         'section'       => APPPATH . 'Libraries/section',
         'incl'          => APPPATH . 'Libraries/incl',
         'sessions'      => APPPATH . 'Libraries/sessions',
+        'access'        => APPPATH . 'Libraries/access',
+        'release'       => APPPATH . 'Libraries/release',
     ];
 
     /**

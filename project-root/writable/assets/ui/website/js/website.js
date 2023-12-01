@@ -49,11 +49,21 @@
 $(function(){
 
     let body = $('body');
-
+    //------------------------------------------------------------------------------------------------------------------
     body.on('click', '.offcanvas .btn-close', function(){
         setTimeout(function(){
             $('.btn-quote-panel').blur();
         }, 300);
     });
+    //------------------------------------------------------------------------------------------------------------------
+    body.on('click', '.product-card', function(e){
+
+        if($(e.target).parent().hasClass('ui-link')) return;
+        if($(e.target).hasClass('ui-link')) return;
+
+        let el = $(this);
+        document.location = el.data('url');
+    });
+    //------------------------------------------------------------------------------------------------------------------
 
 });

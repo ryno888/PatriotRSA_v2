@@ -11,131 +11,73 @@
      * @var $view \Kwerqy\Ember\com\ci\view\view
      */
 
-
-    display(\Kwerqy\Ember\com\num\num::format_bytes(50000));
-    display(\Kwerqy\Ember\com\num\num::format_amount(50000));
-    display(\Kwerqy\Ember\com\num\num::currency(1234.56), true);
-
-
-    $product_arr = \Kwerqy\Ember\Ember::dbt("product")->get_fromdb("1=1", ["multiple" => true]);
-    foreach ($product_arr as $product){
-        $product->pro_name = str_replace('"', "", $product->pro_name);
-        $product->update();
-    }
-
-//    $mock_data_arr = explode("\n", $mock_data);
-//    foreach ($mock_data_arr as $mock_data){
+//    \Kwerqy\Ember\com\solid_classes\solid::install();
 //
-//        $product = \Kwerqy\Ember\Ember::dbt("product")->get_fromdefault();
-//        $product->pro_name = str_replace(["\n"], "", $mock_data);
-//        $product->pro_is_published = 1;
-//        $product->pro_price = rand(500, 800);
-//        $product->insert();
+//    display(\Kwerqy\Ember\com\http\http::get_control());
+//    display(\Kwerqy\Ember\Ember::$request->get("id"));
+//    display(\Kwerqy\Ember\Ember::dbt("category")->get_create_sql());
+//    display(\Kwerqy\Ember\Ember::dbt("category_property")->get_create_sql());
+
+
+	$sql = \Kwerqy\Ember\com\db\sql\select::make();
+	$sql->select("cat_id AS id");
+	$sql->select("category.*");
+	$sql->select("keyword.cap_value AS keyword");
+	$sql->select("lead_time.cap_value AS lead_time");
+
+	$sql->from("category");
+	$sql->left_join_property(CATEGORY_PROPERT_KEYWORD, "category", "keyword");
+	$sql->left_join_property(CATEGORY_PROPERT_LEAD_TIME, "category", "lead_time");
+
+	display($sql->build());
+
+
+//    $product = \Kwerqy\Ember\Ember::dbt("product")->get_fromdb("1=1");
+//    $product->save_property(PRODUCT_PROPERTY_FEATURE_COLOR, "red");
+
+//    display($product->get_prop(PRODUCT_PROPERTY_FEATURE_COLOR));
+//    display($product->get_prop(PRODUCT_PROPERTY_FEATURE_COLOR));
+//    display($product->get_prop(PRODUCT_PROPERTY_FEATURE_COLOR));
+//    display($product->get_prop(PRODUCT_PROPERTY_FEATURE_COLOR));
+
+//    echo \Kwerqy\Ember\com\ui\ui::make()->iproperty($product, PRODUCT_PROPERTY_FEATURE_COLOR);
+//    echo \Kwerqy\Ember\com\ui\ui::make()->isetting();
+
+
+//	$solid = \Kwerqy\Ember\com\solid_classes\solid::get_instance(PRODUCT_PROPERTY_FEATURE_COLOR);
+//	display($solid->get_display_name());
+//	display($solid->format("red"));
+//	$solid = \Kwerqy\Ember\com\solid_classes\solid::get_instance(USER_ROLE_ADMIN);
+//	display($solid->get_display_name());
+
+//    	$buffer->div_([".container page-wrapper" => true, ]);
+//			$buffer->div_([".row" => true, ]);
+//			    $buffer->div_([".col" => true, ]);
 //
-//    }
-    
-//    $role = \Kwerqy\Ember\com\solid_classes\helper::make()->get_from_constant("USER_ROLE_DEV");
+//			        	$fn_check = function($color)use(&$buffer){
+//			        	    $buffer->div_([".row" => true]);
+//			        	        $buffer->div_([".col-12" => true]);
+//                                    $buffer->xicheckbox_round("checkbox_{$color}", true, $color, ["color" => $color]);
+//			        	        $buffer->_div();
+//			        	    $buffer->_div();
+//                        };
 //
-//    $sql = \Kwerqy\Ember\com\db\sql\select::make();
-//    $sql->select("person_role.*");
-//    $sql->from("person_role");
-//    $sql->left_join("acl_role", "pel_ref_acl_role = acl_id");
-//    $sql->and_where("pel_ref_person = ".dbvalue(2));
-//    $sql->and_where("acl_code = ".dbvalue($role->get_code()));
+//			        	$fn_check("red");
+//			        	$fn_check("orange");
+//			        	$fn_check("yellow");
+//			        	$fn_check("green");
+//			        	$fn_check("teal");
+//			        	$fn_check("cyan");
+//			        	$fn_check("blue");
+//			        	$fn_check("purple");
+//			        	$fn_check("black");
+//			        	$fn_check("white");
+//			        	$fn_check("gray");
 //
-//    display($sql->build());
-
-//    $sql = \Kwerqy\Ember\com\db\sql\select::make();
-//    $sql->select("person.*");
-//    $sql->from("person");
-//    $sql->and_where("1=1");
-//
-//    $person = \Kwerqy\Ember\Ember::dbt("person")->get_fromsql($sql);
-//    display($person->has_role(USER_ROLE_DEV));
-
-//    \Kwerqy\Ember\Ember::dbt("acl_role")->install_defaults();
-//    \Kwerqy\Ember\Ember::dbt("person")->install_defaults();
-
-
-//    $php_to_db = \Kwerqy\Ember\com\db\coder\php_to_db::make();
-//
-//    display($php_to_db->get_create_sql("product"));
-
-
-//    $email = \Kwerqy\Ember\com\email\email::make();
-//    $email->set_to("ryno@liquidedge.co.za");
-////    $email->set_to("ryno888@gmail.com");
-//    $email->set_from("admin@patriotrsa.co.za", "PatriotRSA");
-//    $email->set_subject("test Subject");
-//    $email->set_body(function(){
-//        $buffer = \Kwerqy\Ember\com\ui\ui::make()->buffer();
-//        $buffer->p(["*" => "Dear Admin"]);
-//        $buffer->p(["*" => "You have received a new contact request from your website."]);
-//        $buffer->p(["*" => "Here are the details"]);
-//
-//        $buffer->p(["*" => "Kind Regards"]);
-//        $buffer->p(["*" => getenv("ember.name"). " Team"]);
-//        return $buffer->build();
-//    });
-//    $email->send();
-
-
-//    ini_set('error_log', WRITEPATH."logs/log-".\Kwerqy\Ember\com\date\date::strtodate().".log");
-//    trigger_error("Error message here", E_USER_ERROR);
-
-
-//    $email = \Config\Services::email();
-//     $email->sendMultipart = false;
-//     $email->setMailType("html");
-//
-//     $email->setFrom(getenv("ember.email.from"), getenv("ember.name").' - Contact Request');
-//     $email->setTo("ryno@liquidedge.co.za");
-//     $email->setSubject('Contact Request From Website');
-//
-//     $buffer = \Kwerqy\Ember\com\ui\ui::make()->buffer();
-//     $buffer->p(["*" => "Dear Admin"]);
-//     $buffer->p(["*" => "You have received a new contact request from your website."]);
-//     $buffer->p(["*" => "Here are the details"]);
-//
-//     $buffer->p(["*" => "Kind Regards"]);
-//     $buffer->p(["*" => getenv("ember.name"). " Team"]);
-//     $email->setMessage( $buffer->build());
-//
-//     $result =  $email->send();
-
-//    $person = core::dbt("person");
-
-//    \Kwerqy\Ember\com\factory\coder\codeIgniter\install_views::make()->build();
-//    \Kwerqy\Ember\com\factory\coder\codeIgniter\install_dbs::make()->build();
-
-//    \Kwerqy\Ember\com\factory\coder\codeIgniter\install_common_php::make()->build();
-
-//    if(!\Kwerqy\Ember\Ember::is_installed()){
-//        file_put_contents(DIR_ROOT.".kwerqy_install_log", Kwerqy\Ember\com\date\date::strtodatetime());
-//    }else{
-//    }
-
-//    display(\Kwerqy\Ember\Ember::is_installed(), true);
-
-
-//    $dbt = \Kwerqy\Ember\Ember::dbt("acl_role");
-//    $dbt = \Kwerqy\Ember\Ember::dbt("person");
-//    helper('acl_role');
-//    include(DIR_APP."/Libraries/db/acl_role.php");
-//    $db = new \db\acl_role();
-//    $buffer->form("xryno/xtest");
-//    $buffer->section_([".banner-wrapper" => true, ]);
-//        $buffer->div_([".container" => true]);
-//            $buffer->div_([".row" => true]);
-//                $buffer->div_([".col" => true]);
-//                    $buffer->xheader(1, "Test");
-//                $buffer->_div();
-//                $buffer->div_([".col" => true]);
-//                    $buffer->submit_button();
+////                    $buffer->xirange("range");
 //                $buffer->_div();
 //            $buffer->_div();
 //        $buffer->_div();
-//    $buffer->_section();
 
 });
 

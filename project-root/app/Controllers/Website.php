@@ -20,6 +20,10 @@ class Website extends BaseController {
         return \Kwerqy\Ember\com\ui\ui::make()->ci_controller("website", "website/quote/$page");
     }
     //---------------------------------------------------------------------------------------
+    public function product($page) {
+        return \Kwerqy\Ember\com\ui\ui::make()->ci_controller("website", "website/product/$page");
+    }
+    //---------------------------------------------------------------------------------------
     public function message() {
 
         return \Kwerqy\Ember\com\ui\ui::make()->ci_controller("website", "website/index/message");
@@ -31,10 +35,6 @@ class Website extends BaseController {
     }
     //---------------------------------------------------------------------------------------
     public function xcontact() {
-
-        if(!\Kwerqy\Ember\com\captcha\captcha::is_valid()){
-            return \Kwerqy\Ember\com\http\http::ajax_response(["redirect" => \Kwerqy\Ember\com\http\http::get_error_url(ERROR_CODE_CAPTCHA_ERROR)]);
-        }
 
         if(!\Kwerqy\Ember\com\http\http::is_valid_form_submit()){
 		    return \Kwerqy\Ember\com\http\http::ajax_response(["redirect" => \Kwerqy\Ember\com\http\http::get_error_url(ERROR_CODE_ACCESS_DENIED)]);
@@ -55,6 +55,10 @@ class Website extends BaseController {
 
 		if(!\Kwerqy\Ember\com\data\data::is_valid_email( $per_email)){
 		    return \Kwerqy\Ember\com\http\http::ajax_response(["redirect" => \Kwerqy\Ember\com\http\http::get_error_url(ERROR_CODE_ACCESS_DENIED)]);
+        }
+
+		if(!\Kwerqy\Ember\com\captcha\captcha::is_valid()){
+            return \Kwerqy\Ember\com\http\http::ajax_response(["redirect" => \Kwerqy\Ember\com\http\http::get_error_url(ERROR_CODE_CAPTCHA_ERROR)]);
         }
 
 		$email = \Kwerqy\Ember\com\email\email::make();
@@ -86,6 +90,31 @@ class Website extends BaseController {
 
     }
     //---------------------------------------------------------------------------------------
+    public function xfilter_category() {
+
+        $category_filter = \sessions\category_filter::make();
+        $category_filter->page = \Kwerqy\Ember\Ember::$request->get("page", TYPE_INT, ["default" => 1]);
+        $category_filter->price_from = \Kwerqy\Ember\Ember::$request->get("price_from", TYPE_FLOAT, ["default" => 0]);
+        $category_filter->price_to = \Kwerqy\Ember\Ember::$request->get("price_to", TYPE_FLOAT, ["default" => 1000]);
+        $category_filter->update();
+
+        $category_filter->get_min_max();
+
+        return \Kwerqy\Ember\com\http\http::ajax_response(["js" => "
+            product_panel.refresh({
+                no_overlay:true,
+                done:function(){
+                    price.update({
+                        from: {$category_filter->price_from},
+                        to: {$category_filter->price_to},
+                    });
+                    
+                    app.overlay.hide();
+                }
+            });
+        "]);
+    }
+    //---------------------------------------------------------------------------------------
     public function xremove_quote_item() {
         $index = \Kwerqy\Ember\Ember::$request->get('index', TYPE_STRING);
         if($index){
@@ -111,10 +140,10 @@ class Website extends BaseController {
     //---------------------------------------------------------------------------------------
     public function xadd_quote_item() {
 
-//        if(!\Kwerqy\Ember\com\captcha\captcha::is_valid()){
-//            $solid = \Kwerqy\Ember\com\solid_classes\helper::make()->get_from_constant("ERROR_CODE_CAPTCHA_ERROR");
-//            return \Kwerqy\Ember\com\http\http::ajax_response(["alert" => $solid->get_description(), "title" => $solid->get_name()]);
-//        }
+        if(!\Kwerqy\Ember\com\captcha\captcha::is_valid()){
+            $solid = \Kwerqy\Ember\com\solid_classes\helper::make()->get_from_constant("ERROR_CODE_CAPTCHA_ERROR");
+            return \Kwerqy\Ember\com\http\http::ajax_response(["alert" => $solid->get_description(), "title" => $solid->get_name()]);
+        }
 
         if(!\Kwerqy\Ember\com\http\http::is_valid_form_submit()){
 		    return \Kwerqy\Ember\com\http\http::ajax_response(["redirect" => \Kwerqy\Ember\com\http\http::get_error_url(ERROR_CODE_ACCESS_DENIED)]);
@@ -141,10 +170,10 @@ class Website extends BaseController {
     //---------------------------------------------------------------------------------------
     public function xedit_quote_item() {
 
-//        if(!\Kwerqy\Ember\com\captcha\captcha::is_valid()){
-//            $solid = \Kwerqy\Ember\com\solid_classes\helper::make()->get_from_constant("ERROR_CODE_CAPTCHA_ERROR");
-//            return \Kwerqy\Ember\com\http\http::ajax_response(["alert" => $solid->get_description(), "title" => $solid->get_name()]);
-//        }
+        if(!\Kwerqy\Ember\com\captcha\captcha::is_valid()){
+            $solid = \Kwerqy\Ember\com\solid_classes\helper::make()->get_from_constant("ERROR_CODE_CAPTCHA_ERROR");
+            return \Kwerqy\Ember\com\http\http::ajax_response(["alert" => $solid->get_description(), "title" => $solid->get_name()]);
+        }
 
         if(!\Kwerqy\Ember\com\http\http::is_valid_form_submit()){
 		    return \Kwerqy\Ember\com\http\http::ajax_response(["redirect" => \Kwerqy\Ember\com\http\http::get_error_url(ERROR_CODE_ACCESS_DENIED)]);
@@ -173,10 +202,10 @@ class Website extends BaseController {
     //---------------------------------------------------------------------------------------
     public function xverify_quote_email() {
 
-//        if(!\Kwerqy\Ember\com\captcha\captcha::is_valid()){
-//            $solid = \Kwerqy\Ember\com\solid_classes\helper::make()->get_from_constant("ERROR_CODE_CAPTCHA_ERROR");
-//            return \Kwerqy\Ember\com\http\http::ajax_response(["alert" => $solid->get_description(), "title" => $solid->get_name()]);
-//        }
+        if(!\Kwerqy\Ember\com\captcha\captcha::is_valid()){
+            $solid = \Kwerqy\Ember\com\solid_classes\helper::make()->get_from_constant("ERROR_CODE_CAPTCHA_ERROR");
+            return \Kwerqy\Ember\com\http\http::ajax_response(["alert" => $solid->get_description(), "title" => $solid->get_name()]);
+        }
 
         if(!\Kwerqy\Ember\com\http\http::is_valid_form_submit()){
 		    return \Kwerqy\Ember\com\http\http::ajax_response(["redirect" => \Kwerqy\Ember\com\http\http::get_error_url(ERROR_CODE_ACCESS_DENIED)]);
@@ -311,10 +340,10 @@ class Website extends BaseController {
     //---------------------------------------------------------------------------------------
     public function xcomplete_quote() {
 
-//        if (!\Kwerqy\Ember\com\captcha\captcha::is_valid()) {
-//            $solid = \Kwerqy\Ember\com\solid_classes\helper::make()->get_from_constant("ERROR_CODE_CAPTCHA_ERROR");
-//            return \Kwerqy\Ember\com\http\http::ajax_response(["alert" => $solid->get_description(), "title" => $solid->get_name()]);
-//        }
+        if (!\Kwerqy\Ember\com\captcha\captcha::is_valid()) {
+            $solid = \Kwerqy\Ember\com\solid_classes\helper::make()->get_from_constant("ERROR_CODE_CAPTCHA_ERROR");
+            return \Kwerqy\Ember\com\http\http::ajax_response(["alert" => $solid->get_description(), "title" => $solid->get_name()]);
+        }
 
         if (!\Kwerqy\Ember\com\http\http::is_valid_form_submit()) {
             return \Kwerqy\Ember\com\http\http::ajax_response(["redirect" => \Kwerqy\Ember\com\http\http::get_error_url(ERROR_CODE_ACCESS_DENIED)]);

@@ -115,9 +115,9 @@ class Dropzone extends BaseController {
         $session_id = \Kwerqy\Ember\Ember::$request->get("session_id");
         $session = \Kwerqy\Ember\com\incl\dropzone\session::make(["name" => $session_id]);
 
-        return \Kwerqy\Ember\com\ui\ui::make()->ci_controller("dropzone", "vcrop", [
+        return \Kwerqy\Ember\com\ui\ui::make()->ci_controller("system", "bootstrap/dropzone/vcrop", [
             "data" => [
-                "session" => $session,
+                "dropzone_session" => $session,
                 "file_index" => $file_index,
             ],
             "pre_layout" => [],

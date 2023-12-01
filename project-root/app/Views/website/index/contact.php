@@ -59,54 +59,17 @@
                 $buffer->_div();
                 $buffer->div_([".col-md-6 col-xl-4" => true, ]);
 
-                    $buffer->form("");
+                    $buffer->form("website/xcontact");
                     $buffer->xitext("per_firstname", false, false, ["@placeholder" => "Name", ".mb-3" => true, "required" => true]);
                     $buffer->xitext("per_lastname", false, false, ["@placeholder" => "Surname", ".mb-3" => true, "required" => true]);
                     $buffer->xitext("per_email", false, false, ["@placeholder" => "Email", ".mb-3" => true, "required" => true]);
                     $buffer->xitextarea("message", false, false, ["@placeholder" => "Message", ".mb-3" => true, "required" => true]);
-                    $buffer->xbutton("Submit", false, [".btn-submit w-100" => true]);
+                    $buffer->submit_button([
+                        "label" => "Submit",
+                        "@data-captcha" => getenv("ember.integrations.google.captcha.sitekey"),
+                        ".w-100" => true,
+                    ]);
 
-                    $buffer->add(\Kwerqy\Ember\com\captcha\captcha::get_html());
-
-                    $action = \Kwerqy\Ember\com\http\http::build_action_url("website/xcontact");
-                    \Kwerqy\Ember\com\js\js::add_domready_script("
-                        $('body').on('click', '.btn-submit', function(e){
-                            let btn = $(this);
-                            e.preventDefault();
-                            
-                            app.html.set_btn_loading(btn);
-                            if (typeof grecaptcha != 'undefined') {
-                                grecaptcha.ready(function() {
-                                    grecaptcha.execute('".getenv("ember.google.sitekey")."', {action: 'submit'}).then(function(token) {
-                                        ".\Kwerqy\Ember\com\js\js::ajax($action, [
-                                            "*no_overlay" => true,
-                                            "*data" => "!{'g-recaptcha-response':token}",
-                                            "*form" => "#{$buffer->form_id}",
-                                            "*beforeSend" => "function(){ 
-                                                $('#{$buffer->form_id}').find('.form-control').removeClass('is-invalid'); 
-                                            }",
-                                            "*success" => "function(response){
-                                                {$buffer->form_id}.process_form_response(response);
-                                                app.html.unset_btn_loading(btn);
-                                            }",
-                                        ])."
-                                    });
-                                });
-                            }else{
-                                ".\Kwerqy\Ember\com\js\js::ajax($action, [
-                                    "*no_overlay" => true,
-                                    "*form" => "#{$buffer->form_id}",
-                                    "*beforeSend" => "function(){ 
-                                        $('#{$buffer->form_id}').find('.form-control').removeClass('is-invalid'); 
-                                    }",
-                                    "*success" => "function(response){
-                                        {$buffer->form_id}.process_form_response(response);
-                                        app.html.unset_btn_loading(btn);
-                                    }",
-                                ])."
-                            }
-                        })
-                    ");
                 $buffer->_div();
             $buffer->_div();
         $buffer->_div();

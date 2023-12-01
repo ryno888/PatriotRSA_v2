@@ -9,17 +9,17 @@ class Email extends BaseConfig
     /**
      * @var string
      */
-    public $fromEmail;
+    public $fromEmail = '';
 
     /**
      * @var string
      */
-    public $fromName;
+    public $fromName = '';
 
     /**
      * @var string
      */
-    public $recipients;
+    public $recipients = '';
 
     /**
      * The "user agent"
@@ -47,21 +47,21 @@ class Email extends BaseConfig
      *
      * @var string
      */
-    public $SMTPHost;
+    public $SMTPHost = '';
 
     /**
      * SMTP Username
      *
      * @var string
      */
-    public $SMTPUser;
+    public $SMTPUser = '';
 
     /**
      * SMTP Password
      *
      * @var string
      */
-    public $SMTPPass;
+    public $SMTPPass = '';
 
     /**
      * SMTP Port

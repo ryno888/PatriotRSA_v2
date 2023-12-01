@@ -81,7 +81,7 @@
         $buffer->div_([".row mt-2" => true]);
             $buffer->div_([".col-12 d-flex" => true]);
                 $buffer->xbutton("Clear Quote", \Kwerqy\Ember\com\js\js::ajax(site_url("website/xclear_quote"), ["*confirm" => true]), [".btn-secondary btn-secondary-gradient w-100 me-1 py-2" => true]);
-                $buffer->submit_button(["label" => "Verify Email Now", ".btn-primary btn-primary-gradient w-100 py-2" => true]);
+                $buffer->submit_button(["label" => "Verify Email Now", ".btn-primary btn-primary-gradient w-100 py-2" => true, "@data-captcha" => getenv("ember.integrations.google.captcha.sitekey"),]);
             $buffer->_div();
         $buffer->_div();
 

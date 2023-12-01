@@ -44,16 +44,16 @@
         $buffer->_div();
     };
 
-    $offcanvas =\app\ui::make()->offcanvas([
+    $offcanvas =\app\ui\ui::make()->offcanvas([
         "/offcanvas-header" => [".bg-custom-gradient py-4" => true],
     ]);
     $offcanvas->set_heading(4, "Quote Builder", [".text-white mb-0" => true]);
     $offcanvas->set_body(function(){
-        return \app\ui::make()->panel(site_url("website/catalogue/quote_panel"), ["id" => "quote_panel"])->build();
+        return \app\ui\ui::make()->panel(site_url("website/catalogue/quote_panel"), ["id" => "quote_panel"])->build();
     });
 
     $buffer->xbutton(function(){
-        $buffer = \app\ui::make()->buffer();
+        $buffer = \app\ui\ui::make()->buffer();
         $buffer->div_([".row align-items-center g-0" => true]);
             $buffer->div_([".col-12" => true]);
                 $buffer->span(["*" => "Quote Builder"]);

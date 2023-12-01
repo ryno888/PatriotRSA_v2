@@ -31,4 +31,10 @@
 .modal .modal-header .close {
   padding: 5px 5px 5px 5px; }
 
+.irs--flat .irs-bar {
+  background-color: var(--bs-primary); }
+
+.irs--flat .irs-from, .irs--flat .irs-to, .irs--flat .irs-single {
+  background-color: var(--bs-primary); }
+
 /*# sourceMappingURL=app.bootstrap.css.map */
