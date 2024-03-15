@@ -11,6 +11,13 @@
      * @var $view \Kwerqy\Ember\com\ci\view\view
      */
 
+
+    echo \Kwerqy\Ember\com\ui\ui::make()->button("test");
+
+
+//    $test = \Kwerqy\Ember\Ember::dbt("category")->get_fromdb(1);
+//    display($test);
+
 //    \Kwerqy\Ember\com\solid_classes\solid::install();
 //
 //    display(\Kwerqy\Ember\com\http\http::get_control());
@@ -19,17 +26,17 @@
 //    display(\Kwerqy\Ember\Ember::dbt("category_property")->get_create_sql());
 
 
-	$sql = \Kwerqy\Ember\com\db\sql\select::make();
-	$sql->select("cat_id AS id");
-	$sql->select("category.*");
-	$sql->select("keyword.cap_value AS keyword");
-	$sql->select("lead_time.cap_value AS lead_time");
-
-	$sql->from("category");
-	$sql->left_join_property(CATEGORY_PROPERT_KEYWORD, "category", "keyword");
-	$sql->left_join_property(CATEGORY_PROPERT_LEAD_TIME, "category", "lead_time");
-
-	display($sql->build());
+//	$sql = \Kwerqy\Ember\com\db\sql\select::make();
+//	$sql->select("cat_id AS id");
+//	$sql->select("category.*");
+//	$sql->select("keyword.cap_value AS keyword");
+//	$sql->select("lead_time.cap_value AS lead_time");
+//
+//	$sql->from("category");
+//	$sql->left_join_property(CATEGORY_PROPERT_KEYWORD, "category", "keyword");
+//	$sql->left_join_property(CATEGORY_PROPERT_LEAD_TIME, "category", "lead_time");
+//
+//	display($sql->build());
 
 
 //    $product = \Kwerqy\Ember\Ember::dbt("product")->get_fromdb("1=1");

@@ -2,6 +2,7 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/project-root/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/project-root/vendor/theseer/tokenizer" />
       <excludeFolder url="file://$MODULE_DIR$/project-root/vendor/symfony/deprecation-contracts" />
       <excludeFolder url="file://$MODULE_DIR$/project-root/vendor/phpunit/php-text-template" />

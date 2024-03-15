@@ -21,12 +21,20 @@
                             "*width" => "modal-xl",
                         ]), [".btn-sm" => true, "icon" => "fa-plus"]);
                     });
-				    $table->set_search_field("pro_name");
+				    $table->set_search_field(\core::db()->getsql_concat(["pro_name", "LOWER(color_str)", "LOWER(size_str)"]));
 				    $table->set_sql(function(){
 				        $sql = \Kwerqy\Ember\com\db\sql\select::make();
-				        $sql->select("pro_id AS id");
-				        $sql->select("product.*");
-				        $sql->from("product");
+				        $sql->select("*");
+				        $sql->from(function(){
+				        	$sql = \Kwerqy\Ember\com\db\sql\select::make();
+							$sql->select("pro_id AS id");
+							$sql->select("product.*");
+							$sql->select_property_group_concat(PRODUCT_PROPERTY_SIZE, "product", "size_str");
+							$sql->select_property_group_concat(PRODUCT_PROPERTY_FEATURE_COLOR, "product", "color_str");
+							$sql->from("product");
+							return "({$sql->build()}) AS inner_table";
+						});
+				        $sql->groupby("pro_id");
 				        return $sql;
                     });
 				    $table->add_field("Title", "pro_name");
@@ -40,6 +48,10 @@
 				    $table->add_field("Price", "pro_price", ["function" => function($content, $item_index, $field_index, $table){
 				        return \Kwerqy\Ember\com\num\num::currency($content);
                     }]);
+				    $table->add_field("Sizes", "size_str");
+				    $table->add_field("Colors", "color_str", ["function" => function($content, $item_index, $field_index, $table){
+				    	return ucwords($content);
+					}]);
 
 				    $table->add_action_dropdown(function($item_data, $dropdown, $table){
 				        $dropdown->add_link(site_url("sysproduct/vmanage/id/{$item_data["pro_slug"]}"), "Edit");

@@ -16,7 +16,7 @@
         $buffer->div_([".row" => true,]);
             $buffer->div_([".col-12" => true,]);
                 $buffer->dbinput($category, "cat_name", ["required" => true]);
-                $buffer->dbinput($category, "cat_ref_category");
+                $buffer->dbinput($category, "cat_ref_category", ["value_option_arr" => \Kwerqy\Ember\Ember::dbt("category")->select_list(["where" => "cat_ref_category IS NULL"])]);
             $buffer->_div();
         $buffer->_div();
 

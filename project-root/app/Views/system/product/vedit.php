@@ -42,7 +42,7 @@
 
             			$options = array_merge([
             			    "rows" => 2,
-							"help" => "Add ".strtolower($label)." by separating them with ' | '",
+							"help" => false,
             			], $options);
 
 						$solid = \Kwerqy\Ember\com\solid_classes\solid::get_instance($key);
@@ -57,6 +57,9 @@
             			    	$buffer->xform_label($label);
             			    $buffer->_div();
             			    $buffer->div_([".col-12" => true]);
+
+            			    	if(!$options["help"]) $options["help"] = implode("<br>", ["Add ".strtolower($label)." by separating them with ' | '", "Available options are: ".implode(" | ", $solid->get_data_arr())]);
+
             			    	$buffer->xitextarea("{$solid->get_form_id()}_variant", implode(" | ", $value_arr), false, $options);
             			    $buffer->_div();
             			$buffer->_div();

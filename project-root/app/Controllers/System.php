@@ -30,8 +30,10 @@ class System extends BaseController {
     //---------------------------------------------------------------------------------------
     public function login() {
 
-        if(\Kwerqy\Ember\Ember::$user->active_user)
-            return \Kwerqy\Ember\com\http\http::go_error(ERROR_CODE_ACTIVE_SESSION);
+        if(\Kwerqy\Ember\Ember::$user->active_user){
+        	if(\Kwerqy\Ember\Ember::auth_check("admins")) return \Kwerqy\Ember\com\http\http::redirect("system/index/home");
+            else return \Kwerqy\Ember\com\http\http::go_error(ERROR_CODE_ACTIVE_SESSION);
+		}
 
         return \Kwerqy\Ember\com\ui\ui::make()->ci_controller("system", "system/index/login", [
             "pre_layout" => [

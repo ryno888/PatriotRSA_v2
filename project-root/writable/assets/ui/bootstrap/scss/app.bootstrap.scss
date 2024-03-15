@@ -1,6 +1,5 @@
 //import bootstrap
-@import "bootstrap/functions";
-@import "bootstrap/variables";
+@import "bootstrap_append/variables_append";
 
 .banner-wrapper {
     border-bottom: 3px solid $primary !important;

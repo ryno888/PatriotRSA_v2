@@ -22,20 +22,27 @@
 							"*height_class" => "min-h-30vh"
                         ]), [".btn-sm" => true, "icon" => "fa-plus"]);
                     });
-				    $table->set_search_field("cat_name");
+				    $table->set_search_field("CONCAT(cat_name, parent_cat_name)");
 				    $table->set_sql(function(){
 				        $sql = \Kwerqy\Ember\com\db\sql\select::make();
-				        $sql->select("cat_id AS id");
+				        $sql->select("category.cat_id AS id");
 				        $sql->select("category.*");
-//				        $sql->from_subquery("SELECT cat_id FROM category", "sub_category");
-//				        $sql->left_join_property(PRODUCT_PROPERTY_COLOR_DESCRIPTION, "category", "color_description");
+				        $sql->select("parent_category.cat_name AS parent_cat_name");
 				        $sql->from("category");
+				        $sql->left_join("category AS parent_category", "(category.cat_ref_category = parent_category.cat_id)");
 				        return $sql;
                     });
+
+
 				    $table->add_field("Title", "cat_name");
+				    $table->add_field("Parent Category", "parent_cat_name");
 
 				    $table->add_action_dropdown(function($item_data, $dropdown, $table){
-				        $dropdown->add_link(site_url("sysproduct/vmanage/id/{$item_data["cat_slug"]}"), "Edit");
+				        $dropdown->add_link("javascript:".\app\ui\ui::make()->js_popup(site_url("syscategory/vedit/id/{$item_data["cat_id"]}"), [
+                            "*title" => "Edit Category",
+                            "*width" => "modal-md",
+							"*height_class" => "min-h-30vh"
+                        ]), "Edit");
                     });
 
                     $buffer->add($table->build());
