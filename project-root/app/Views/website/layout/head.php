@@ -21,6 +21,7 @@
         $buffer->add($assets_builder->get_stream_css());
 
         $buffer->script(["@src" => \Kwerqy\Ember\com\http\http::get_stream_url(ROOTPATH."/vendor/components/jquery/jquery.min.js")]);
+        $buffer->xgoogle_tag_manager(getenv("ember.integrations.google.tag.manager"));
 
     $buffer->_head();
     
