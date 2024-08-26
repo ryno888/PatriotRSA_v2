@@ -81,13 +81,13 @@
 
             $fn_card("amrod/Corporate and promotional headwear and apparel.png", "Corporate and promotional headwear and apparel", "https://viewer.zoomcatalog.com/corporate-and-promotional-apparel-and-headwear-2023-2024", ["collection" => "Amrod Collection",]);
             $fn_card("amrod/Altitude workwear.png", "Altitude workwear", "https://viewer.zoomcatalog.com/altitude-workwear-2023-2024", ["collection" => "Amrod Collection",]);
-            $fn_card("amrod/Alex Varga (Timeless collection).png", "Alex Varga (Timeless collection)", "https://issuu.com/amrodcorporate/docs/alex_varga_2022_2023?fr=sMDJlMzUzMjgyNDY", ["collection" => "Amrod Collection",]);
-            $fn_card("amrod/Kooshty (clean living).png", "Kooshty (clean living)", "https://issuu.com/amrodcorporate/docs/kooshty_2022_2023?fr=sNTdjYjUzMjgyNDY", ["collection" => "Amrod Collection",]);
-            $fn_card("amrod/Okiyo (Eco conscious).png", "Okiyo (Eco conscious)", "https://issuu.com/amrodcorporate/docs/okiyo_2022_2023?fr=sNGI3MjUzMjgyNDY", ["collection" => "Amrod Collection",]);
-            $fn_card("amrod/Serendipio (home and drinkware).png", "Serendipio (home and drinkware)", "https://issuu.com/amrodcorporate/docs/serendipio_2022_2023?fr=sNTZlMDUzMjgyNDY", ["collection" => "Amrod Collection",]);
-            $fn_card("amrod/Slazenger.png", "Slazenger", "https://issuu.com/amrodcorporate/docs/slazenger_2022_2023?fr=sNDdkZTUzMjgyNDY", ["collection" => "Amrod Collection",]);
-            $fn_card("amrod/Swiss cougar (tech collection).png", "Swiss cougar (tech collection)", "https://issuu.com/amrodcorporate/docs/swiss_cougar_2022_2023?fr=sMzgxZjUzMjgyNDY", ["collection" => "Amrod Collection",]);
-            $fn_card("amrod/Andy Cartwright (signature collection).png", "Andy Cartwright (signature collection)", "https://issuu.com/amrodcorporate/docs/andy_cartwright_2022_2023?fr=sMTIzYzU0NjkwMjI", ["collection" => "Amrod Collection",]);
+            $fn_card("amrod/Alex Varga (Timeless collection).png", "Alex Varga (Timeless collection)", "https://issuu.com/promoafrica/docs/alex_varga_apparel_2023?fr=sZDI5YTc1MDc3MTY", ["collection" => "Amrod Collection",]);
+            $fn_card("amrod/Kooshty (clean living).png", "Kooshty (clean living)", "https://issuu.com/promoafrica/docs/kooshty_2022_2023?fr=sZjJkYTc1MDc2OTEk", ["collection" => "Amrod Collection",]);
+            $fn_card("amrod/Okiyo (Eco conscious).png", "Okiyo (Eco conscious)", "https://issuu.com/promoafrica/docs/okiyo_apparel_2023?fr=xIAEoAT3_NTU1", ["collection" => "Amrod Collection",]);
+            $fn_card("amrod/Serendipio (home and drinkware).png", "Serendipio (home and drinkware)", "https://issuu.com/promoafrica/docs/serendipio_2022_2023?fr=sNTMwNzc1MDkwNTE", ["collection" => "Amrod Collection",]);
+            $fn_card("amrod/Slazenger.png", "Slazenger", "https://issuu.com/promoafrica/docs/slazenger_2022_2023?fr=xIAEoAT3_NTU1", ["collection" => "Amrod Collection",]);
+            $fn_card("amrod/Swiss cougar (tech collection).png", "Swiss cougar (tech collection)", "https://issuu.com/promoafrica/docs/swiss_cougar_2022_2023?fr=xKAE9_zU1NQ", ["collection" => "Amrod Collection",]);
+            $fn_card("amrod/Andy Cartwright (signature collection).png", "Andy Cartwright (signature collection)", "https://issuu.com/promoafrica/docs/andy_cartwright_2022_2023?fr=xIAEoAT3_NTU1", ["collection" => "Amrod Collection",]);
             $fn_card("amrod/Custom Packaging.png", "Custom Packaging", "https://multimedia.marketing.amrod.co.za/amrod-B/documents/45d9ed96-02cd-4c58-a58c-70757b40a755.pdf", ["collection" => "Amrod Collection",]);
             $fn_card("amrod/Display catalogue.png", "Display catalogue", "https://viewer.zoomcatalog.com/display-2023-2024", ["collection" => "Amrod Collection",]);
             $fn_card("amrod/Promotional products.png", "Promotional products", "https://viewer.zoomcats.com/promotional-products-201920", ["collection" => "Amrod Collection",]);
@@ -103,13 +103,13 @@
 
         $buffer->div_([".row" => true, ]);
 
-            $fn_card("barron/Winter catalogue.png", "Winter catalogue", "https://api-coffee-latte-live.kevro.co.za/Catalogues/Winter%20Catalogue%202023/Winter%20Catalogue%202023/", ["collection" => "Barron Collection",]);
+            $fn_card("barron/Winter catalogue.png", "Winter catalogue", "https://api-coffee-latte-live.kevro.co.za/Catalogues/2024%20Apparel%20And%20Workwear/2024%20Apparel%20And%20Workwear/", ["collection" => "Barron Collection",]);
 //            $fn_card("barron/Back to school.png", "Back to school", "https://api-coffee-latte-live.kevro.co.za/Catalogues/Back%20to%20School%202022/Back%20to%20School%202022/");
             $fn_card("barron/Gifts and bags.png", "Gifts and bags", "https://api-coffee-latte-live.kevro.co.za/Catalogues/Gifts%20and%20Bags%202022/Gifts%20and%20Bags%202022/2/", ["collection" => "Barron Collection",]);
             $fn_card("barron/Summer catalogue.png", "Summer catalogue", "https://api-coffee-latte-live.kevro.co.za/Catalogues/Summer%20Catalogue%202023/Summer%20Catalogue%202023/29/", ["collection" => "Barron Collection",]);
             $fn_card("barron/Eco friendly bags and gifts.png", "Eco friendly bags and gifts", "https://api-coffee-latte-live.kevro.co.za/Catalogues/Eco-Friendly%20Gifts%20and%20Bags%20Catalogue%202022/Eco-Friendly%20Gifts%20and%20Bags%20Catalogue%202022/", ["collection" => "Barron Collection",]);
             $fn_card("barron/Display catalogue.png", "Display catalogue", "https://api-coffee-latte-live.kevro.co.za/Catalogues/Display%20Catalogue%202023/Display%20Catalogue%202023/", ["collection" => "Barron Collection",]);
-            $fn_card("barron/Workwear and apparel.png", "Workwear and apparel", "https://api-coffee-latte-live.kevro.co.za/Catalogues/Apparel%20And%20Workwear%202023/Apparel%20And%20Workwear%202023/", ["collection" => "Barron Collection",]);
+            $fn_card("barron/Workwear and apparel.png", "Workwear and apparel", "https://api-coffee-latte-live.kevro.co.za/Catalogues/2024%20Apparel%20And%20Workwear/2024%20Apparel%20And%20Workwear/", ["collection" => "Barron Collection",]);
 
         $buffer->_div();
 
